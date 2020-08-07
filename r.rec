@@ -1,0 +1,39 @@
+BootStrap: docker
+From: onceshb/tidyverse-hs
+
+%runscript
+
+%environment
+
+%post
+echo "Installing dependencies..." && \
+        apt-get -y --no-install-recommends update && \
+        apt-get -y --no-install-recommends upgrade && \
+        apt-get install -y --no-install-recommends \
+        bc \
+        build-essential \
+        cmake \
+        git wget unzip \
+        libatlas-base-dev \
+        libprotobuf-dev \
+        libleveldb-dev \
+        libsnappy-dev \
+        libhdf5-serial-dev \
+        protobuf-compiler \
+        liblmdb-dev \
+        pciutils \
+        python3-setuptools \
+        python3-dev \
+        python3-pip \
+        libssl-dev \
+        sudo software-properties-common
+
+
+    #------------------------------------------------------------------------------
+    # Create local binding points for ICS-ACI
+    #------------------------------------------------------------------------------
+    mkdir -p /storage/home
+    mkdir -p /storage/work
+    mkdir -p /gpfs/scratch
+    mkdir -p /gpfs/group
+    mkdir -p /var/spool/torque
